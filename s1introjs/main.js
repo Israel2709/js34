@@ -188,3 +188,91 @@ console.log(number1);
 /*Asignación modular*/
 number1 %= 12;
 console.log(number1);
+
+/*Operadores de comparación*/
+/*Estos operadores evaluan el resultado de comparar dos valores, y siempre devuelven un valor booleano*/
+
+/* variables de referencia:
+
+let number1 = 10;
+let number2 = 5;
+
+*/
+
+/*Mayor que*/
+
+//number1 > number2  ---- true
+
+/*Menor que*/
+
+// number1 < number2 ---- false
+
+/*Mayor o igual que*/
+
+// number1 >= number2 ---- true
+
+/*Menor o igual que*/
+
+// number1 <= number2 ---- false
+
+/*Igual que ( evalua que el valor sea el mismo entre dos variables )*/
+
+let varX = 10;
+let varY = "10";
+
+console.log(varX == varY); /*---true---*/
+
+/*Idéntico a ( evalua que tanto el valor como el tipo de dato sea el mismo entre dos variables)*/
+
+console.log(varX === varY); /*---false---*/
+
+/*Operadores lógicos*/
+/*Sirven para evaluar la relación entre 2 o más expresiones de javascript*/
+
+let logicVariableA = 20;
+let logicVariableB = 15;
+let logicVariableC = 30;
+
+/*And (&&): Devuelve verdadero sí y sólo sí todas las expresiones implicadas son verdaderas*/
+
+console.log(
+  logicVariableA > logicVariableB && logicVariableB < logicVariableC
+); /*----true---*/
+console.log(
+  logicVariableA > logicVariableB && logicVariableB > logicVariableC
+); /*----false---*/
+
+/*Or ( || ): Devuelve verdadero cuando al menos una de las expresiones evaluadas es verdadera*/
+
+console.log(
+  logicVariableA > logicVariableB || logicVariableB < logicVariableC
+); /*----true---*/
+console.log(
+  logicVariableA > logicVariableB || logicVariableB > logicVariableC
+); /*----true---*/
+console.log(
+  logicVariableA < logicVariableB || logicVariableB > logicVariableC
+); /*----false---*/
+
+/*Not ( !expresion ): invierte el resultado de la expresion con la que se está operando*/
+
+let myBoolean = true;
+console.log(!myBoolean); /*---false---*/
+
+console.log(!(logicVariableA > logicVariableB)); /*---false---*/
+
+/*Falsys y truthys*/
+
+//Falsys (es un valor que se interpreta como un false booleano)
+
+/*
+  0
+  ""
+  null
+  undefined
+  NaN
+*/
+
+//Truthy: es un valor que interpreta como verdadero
+
+/* !falsy*/

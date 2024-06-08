@@ -1,0 +1,78 @@
+body {
+    background-color: #FFF9C4; /* Amarillo pastel */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.card {
+    width: 300px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-button {
+    background-color: #FFF9C4; /* Mismo tono amarillo que el fondo */
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.card-button:hover {
+    background-color: #E1DCB3; /* Amarillo más oscuro al pasar el mouse */
+}
+
+.publish-date {
+    color: #666;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.card-title {
+    margin-top: 10px;
+    color: #333;
+    font-size: 18px;
+}
+
+.card-description {
+    color: #666;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.author-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.author-name {
+    font-size: 14px;
+    color: #333;
+}

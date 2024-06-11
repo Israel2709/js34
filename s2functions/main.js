@@ -112,3 +112,24 @@ let marbleTwo = assingMarblesByColor("peru");
 
 console.log(marbleOne);
 console.log(marbleTwo);
+
+/*
+  1.- Necesitamos poder evaluar cualquier frase, y determinar si es una frase corta o es una frase larga, teniendo en cuenta que una frase corta tiene menos de 20 letras y una larga tiene 20 letras o más
+
+
+
+  2.- Necesitamos organizar jugadores con base en el color de su uniforme, 
+      si el uniforme es gris, pertenecen al equipo 1
+      si es negro, pertenecen al equipo 2
+      si es azul, pertenecen al equipo 3
+      cualquier otro color no tiene equipo ( no juega)
+
+
+      
+  3.- Tenemos un juego en el que se usan dos dados, y las reglas son las siguientes:
+    - El juego se gana si se obtiene alguno de los siguientes puntajes:
+          7, 11, 3
+    - Se obtiene una tirada extra con las siguientes condiciones:
+      --Obteniendo dos números iguales
+      --Obteniendo un número divisible entre 3, pero que no sea 3
+*/

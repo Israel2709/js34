@@ -133,3 +133,31 @@ console.log(marbleTwo);
       --Obteniendo dos números iguales
       --Obteniendo un número divisible entre 3, pero que no sea 3
 */
+
+const diceGame = (firstDiceValue, secondDiceValue) => {
+  let puntaje = firstDiceValue + secondDiceValue;
+  let result;
+  switch (puntaje) {
+    case 3:
+    case 7:
+    case 11:
+      result = "Ganaste!!!";
+      break;
+  }
+
+  if (
+    firstDiceValue === secondDiceValue ||
+    (puntaje % 3 === 0 && puntaje !== 3)
+  ) {
+    result = "Tienes otra oportunidad!";
+  } else {
+    let newDice = addAnotherDice();
+  }
+
+  return result;
+};
+
+const addAnotherDice = () => {
+  return Math.floor(Math.random() * 6) + 1;
+};
+diceGame(2, 3);

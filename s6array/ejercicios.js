@@ -1,3 +1,5 @@
+let numbers = [12, 45, 7, 33, 22, 14, 49, 27, 5, 38];
+
 let people = [
   ["Juan", "Gómez", "Martínez"],
   ["Ana", "Pérez", "López"],
@@ -5,8 +7,6 @@ let people = [
   ["María", "Fernández", "Sánchez"],
   ["Luis", "Hernández", "Torres"],
 ];
-
-let numbers = [12, 45, 7, 33, 22, 14, 49, 27, 5, 38];
 
 let users = [
   {
@@ -80,3 +80,21 @@ let users = [
     country: "Chile",
   },
 ];
+
+/*
+  con el array numbers:
+    1.- Obtener la suma total de todos los números que estan dentro del array
+    2.- Necesitamos obtener una nueva lista con únicamente los números que sean pares
+    3.- Necesitamos obtener una nueva lista con únicamente los números que sean nones
+  
+  con el array people:
+    1.- Necesitamos una nueva lista con únicamente los nombres de las personas 
+    2.- Necesitamos una nueva lista que tenga los nombres completos de las personas
+
+  con el array users:
+    1.- Necesito una nueva lista, que contenga únicamente los nombres completos de los usuarios
+    2.- Necesito saber la edad promedio de los usuarios
+    3.- Necesito poder obtener una nueva lista de los usuarios con base en su país
+    4.- Necesito obtener una nueva lista con base en un hobbie ( includes )
+    5.- Necesito una lista que contenga los diferentes hobbies de nuestros usuarios sin repetir
+*/

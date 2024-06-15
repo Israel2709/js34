@@ -98,3 +98,81 @@ let users = [
     4.- Necesito obtener una nueva lista con base en un hobbie ( includes )
     5.- Necesito una lista que contenga los diferentes hobbies de nuestros usuarios sin repetir
 */
+
+const filterByCountry = (dataArray, countryToFilter) => {
+  let result = [];
+  for (let i = 0; i < dataArray.length; i++) {
+    let user = dataArray[i]; /*{
+      name: "Lucía",
+      lastname: "Torres",
+      age: 29,
+      hobbies: ["viajar", "bailar"],
+      country: "Chile",
+    }*/
+    if (user.country.toLowerCase() === countryToFilter.toLowerCase()) {
+      result.push(user);
+    }
+  }
+  return result;
+};
+
+let mexicanUsers = filterByCountry(users, "méxico");
+
+const filterByHobbie = (dataArray, hobbyToSearch) => {
+  let result = [];
+  for (let i = 0; i < dataArray.length; i++) {
+    let user = dataArray[i];
+    let userHasHobby = user.hobbies.includes(hobbyToSearch);
+    if (userHasHobby) result.push(user);
+  }
+  return result;
+};
+
+let pamboleros = filterByHobbie(users, "correr");
+
+const createUniqueHobbies = (dataArray) => {
+  let result = [];
+  for (let i = 0; i < dataArray.length; i++) {
+    /*itera en los usuarios*/
+    let hobbies = dataArray[i].hobbies;
+    for (let j = 0; j < hobbies.length; j++) {
+      /*itera en los hobbies*/
+      if (!result.includes(hobbies[j])) result.push(hobbies[j]);
+    }
+  }
+  return result;
+};
+
+let uniqueHobbies = createUniqueHobbies(users);
+
+let uniqueSetHobbies = (dataArray) => {
+  let allHobbies = [];
+  for (let i = 0; i < dataArray.length; i++) {
+    let userHobbies = dataArray[i].hobbies;
+    allHobbies = [...allHobbies, ...userHobbies];
+  }
+  uniqueHobbies = new Set([...allHobbies]);
+  return uniqueHobbies;
+};
+
+let resultUniqueHobbies = uniqueSetHobbies(users);
+
+console.log(resultUniqueHobbies);
+
+let user = {
+  name: "Lucía",
+  lastname: "Torres",
+  age: 29,
+  hobbies: ["viajar", "bailar"],
+  country: "Chile",
+};
+
+let scores = {
+  html: 9,
+  css: 9,
+  js: 10,
+};
+
+let spreadedUser = { ...user, ...scores, isRegistered: true, generation: 34 };
+
+console.log(spreadedUser);

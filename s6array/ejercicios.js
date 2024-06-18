@@ -116,6 +116,11 @@ const filterByCountry = (dataArray, countryToFilter) => {
   return result;
 };
 
+const filterByContryBis = (dataArray, countryToFilter) =>
+  dataArray.filter(
+    (user) => user.country.toLowerCase() === countryToFilter.toLowerCase()
+  );
+
 let mexicanUsers = filterByCountry(users, "méxico");
 
 const filterByHobbie = (dataArray, hobbyToSearch) => {

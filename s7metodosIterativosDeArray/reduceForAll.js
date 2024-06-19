@@ -160,3 +160,20 @@ let result = {
         {users a los que les gusta viajar}
     ]
 }*/
+
+const reorderInfo = (usersArray) => {
+  let result = usersArray.reduce((accum, current) => {
+    let hobbies = current.hobbies;
+    hobbies.forEach((hobbie) => {
+      accum[hobbie]
+        ? (accum[hobbie] = [...accum[hobbie], current])
+        : (accum[hobbie] = [current]);
+    });
+    return accum;
+  }, {});
+  return result;
+};
+
+let reorderedInfo = reorderInfo(users);
+
+console.log(reorderedInfo);

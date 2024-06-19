@@ -212,14 +212,137 @@ let exchangeRates = {
 /*
   1.- Por cada producto, mostrar en consola el nombre del producto y su costo:
     "El producto {nombre} tiene un costo de {precio}"
-    2.- Crear una nueva lista que contenga todos los productos, con el precio convertido a otra moneda ( dollar | euro | pound ), usar el objeto exchangeRates para la conversión
+*/
+
+const printNamesAndPrices = (productsArray) => {
+  productsArray.forEach(({ name, priceMXN }) =>
+    console.log(`El producto ${name} tiene un costo de ${priceMXN}`)
+  );
+};
+
+printNamesAndPrices(productos);
+
+/*
+  2.- Crear una nueva lista que contenga todos los productos, con el precio convertido a otra moneda ( dollar | euro | pound ), usar el objeto exchangeRates para la conversión
+*/
+
+const applyExchangeRate = (productsArray, currency) => {
+  let result = productsArray.map((product) => ({
+    ...product,
+    [`priceIn${currency}`]: Number(
+      (product.priceMXN * exchangeRates[currency]).toFixed(2)
+    ),
+  }));
+  return result;
+};
+
+let pricesInDollar = applyExchangeRate(productos, "dollar");
+console.log(pricesInDollar);
+
+let pricesInEuro = applyExchangeRate(productos, "euro");
+console.log(pricesInEuro);
+
+let pricesInPound = applyExchangeRate(productos, "pound");
+console.log(pricesInPound);
+
+/*
     3.- Obtener el costo promedio de los objetos de la lista (en mxn)
+*/
+const getAveragePrice = (productsArray) =>
+  productsArray.reduce(
+    (accum, current) => accum + current.priceMXN / productsArray.length,
+    0
+  );
+
+let averagePrice = getAveragePrice(productos);
+console.log(averagePrice);
+
+/*
     4.- Obtener una nueva lista con aquellos productos cuyo precio sea mayor al promedio (en mxn)
+*/
+const getExpensiveProducts = (productsArray, averagePrice) =>
+  productsArray.filter(({ priceMXN }) => priceMXN > averagePrice);
+
+let expensiveProducts = getExpensiveProducts(
+  productos,
+  getAveragePrice(productos)
+);
+
+console.log(expensiveProducts);
+/*
     5.- Obtener una lista de las categorías de los productos sin repetir
+*/
+
+const getCategoriesList = (productsArray) => {
+  let result = productsArray.reduce((accum, current) => {
+    let category = current.category;
+    return accum.includes(category) ? accum : [...accum, category];
+  }, []);
+  return result;
+};
+
+let categoriesList = getCategoriesList(productos);
+
+console.log(categoriesList);
+/*
     6.- Obtener una lista con todos los productos, agregándoles la propiedad shortDescription ( shortDescription debe ser igual a las primeras 5 palabras de description más '...' al final)
         shortDescription: 'Bufanda de lana, ideal para...'
+*/
+const addShortDescription = (productArray) =>
+  productArray.map((product) => {
+    let modifiedProduct = {
+      ...product,
+      shortDescription: `${product.description.split(" ", 5).join(" ")}...`,
+    };
+    delete modifiedProduct.description;
+    return modifiedProduct;
+  });
+
+let productsWithShortDescription = addShortDescription(productos);
+console.log(productsWithShortDescription);
+/*
     7.- Obtener una lista que contenga todos los productos con el precio real en MXN ( el precio real es igual al precio de lista menos el descuento, considerar los casos en que los productos no tienen descuento)
+*/
+
+const applyDiscount = (productArray) =>
+  productArray.map((product) =>
+    product.discount /*El producto tiene descuento?*/
+      ? {
+          ...product,
+          realPrice: product.priceMXN - product.priceMXN * product.discount,
+        }
+      : product
+  );
+
+let productsWithAppliedDiscount = applyDiscount(productos);
+console.log(productsWithAppliedDiscount);
+
+/*
     8.- obtener un producto con base en su id
+*/
+
+const getProductById = (productsArray, productId) =>
+  productsArray.find(({ id }) => id === productId);
+
+let testProduct = getProductById(productos, 2);
+console.log(testProduct);
+
+/*
     9.- Obtener la cantidad de dinero (mxn) que se necesitaría para comprar al menos una pieza de cada producto de la lista
-    10.- Obtener una lista de productos con base en su categoría
-    */
+*/
+
+const getTotalCost = (productsArray) =>
+  productsArray.reduce((accum, { priceMXN }) => accum + priceMXN, 0);
+
+let totalCost = getTotalCost(productos);
+console.log(totalCost);
+
+/*
+  10.- Obtener una lista de productos con base en su categoría
+*/
+
+const getProductsByCategory = (productsArray, queriedCategory) =>
+  productsArray.filter(({ category }) => category === queriedCategory);
+
+let homeProducts = getProductsByCategory(productos, "hogar");
+console.log(homeProducts);

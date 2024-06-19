@@ -104,3 +104,13 @@ const getFullNamesPro = (usersArray) =>
 let fullnamesList = getFullNames(users);
 
 console.log(fullnamesList);
+
+let matrix = [
+  [1, [6, 7]],
+  [3, 4],
+];
+
+let flatArray = [];
+matrix.forEach((innerArray) => {
+  flatArray = [...flatArray, ...innerArray];
+});

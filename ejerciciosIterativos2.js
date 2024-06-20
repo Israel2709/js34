@@ -3,7 +3,7 @@ let blogEntries = [
     title: "Understanding JavaScript Closures",
     content:
       "JavaScript closures are a fundamental concept that every JavaScript developer should understand. In this post, we will explore closures in depth, discuss why they are important, and look at some practical examples of how they can be used in your code...",
-    createdDate: "2024-06-01",
+    createdDate: "2024-01-01",
     createdBy: "Alice",
     reactions: 832,
     comments: [
@@ -163,3 +163,37 @@ let blogEntries = [
 9.- Convierte las fechas de creación de las entradas de blog al formato "MM-DD-YYYY".
 10.- Reemplaza todas las ocurrencias de "JavaScript" en los contenidos de las entradas de blog por "JS".
 */
+
+const applyDateConvertion = (entriesArray) =>
+  entriesArray.map((entry) => {
+    let fechaObj = new Date(entry.createdDate + "T00:00:00Z");
+
+    let dia = String(fechaObj.getUTCDate()).padStart(2, "0");
+
+    let mes = String(fechaObj.getUTCMonth() + 1).padStart(5, "0"); // Los meses van de 0 a 11
+
+    let anio = fechaObj.getUTCFullYear();
+
+    let fechaConvertida = `${dia}-${mes}-${anio}`;
+
+    return { ...entry, formattedDate: fechaConvertida };
+  });
+
+let result = applyDateConvertion(blogEntries);
+
+const convertText = (entriesArray, query, replacement) => {
+  let result = entriesArray.map((entry) => {
+    let hashTags = entry.hashTags;
+    let hashTagsString = hashTags.join(",");
+    console.log(hashTagsString);
+    let regex = new RegExp(query, "gi"); // /javascript/gi
+    let newString = hashTagsString.replace(regex, replacement);
+    let modifiedHashes = newString.split(",");
+    console.log(modifiedHashes);
+    return { ...entry, hashTags: modifiedHashes };
+  });
+  return result;
+};
+
+let newHashes = convertText(blogEntries, "javascript", "JS");
+console.log(newHashes);

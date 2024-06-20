@@ -1,0 +1,28 @@
+.bg-dark-blue {
+  background: hsl(209, 23%, 22%);
+}
+
+.custom-input {
+  height: 50px;
+  padding: 0.5rem 3rem;
+}
+.custom-input::-moz-placeholder {
+  color: white;
+}
+.custom-input::placeholder {
+  color: white;
+}
+.custom-input.search {
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyWw0c35WoDdPJ63lIQbRVbwk6kC0qImMRPA&s");
+  background-size: 30px;
+  background-repeat: no-repeat;
+  background-position: 10px 10px;
+}
+
+.custom-select {
+  height: 50px;
+  background-color: hsl(209, 23%, 22%);
+  color: white;
+  border: none;
+  padding-left: 2rem;
+}/*# sourceMappingURL=styles.css.map */

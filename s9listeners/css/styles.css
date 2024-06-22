@@ -1,0 +1,23 @@
+.work-area {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  border-radius: 100%;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(80deg, rgb(2, 0, 36) 0%, rgb(137, 166, 118) 34%, rgb(56, 142, 177) 56%, rgb(164, 206, 219) 78%, rgb(0, 212, 255) 100%);
+}
+
+@keyframes infiniteRotation {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}
+.work-area.animated {
+  animation-name: infiniteRotation;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}/*# sourceMappingURL=styles.css.map */

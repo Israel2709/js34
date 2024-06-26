@@ -1,43 +1,3 @@
-let usersArray = [];
-let userObject = {};
-
-let generalInfoFields = document.querySelectorAll(
-  "#user-form input.user-general-info"
-);
-
-generalInfoFields.forEach((field) => {
-  field.addEventListener("keyup", (event) => {
-    let property = event.target.name;
-    let value = event.target.value;
-    userObject[property] = value;
-    console.log(usersArray);
-  });
-});
-
-let socialFields = document.querySelectorAll("#user-form .user-socials");
-
-socialFields.forEach((field) => {
-  field.addEventListener("keyup", (event) => {
-    let property = event.target.name;
-    let value = event.target.value;
-    userObject.socials
-      ? (userObject.socials[property] = value)
-      : (userObject.socials = { [property]: value });
-    console.log(usersArray);
-  });
-});
-
-let saveUserBtn = document.getElementById("save-user-btn");
-
-saveUserBtn.addEventListener("click", () => {
-  let keys = Object.keys(userObject);
-  if (keys.length) {
-    usersArray.push({ ...userObject });
-  }
-  console.log(usersArray);
-  printUserCards(usersArray, "user-cards-wrapper");
-});
-
 const createSocialButton = (buttonData) => {
   /*{platform:"facebook",link:"www...."}*/
   let { platform, link } = buttonData;
@@ -112,13 +72,32 @@ const createUserCard = (userInfo) => {
   return col;
 };
 
-const printUserCards = (usersArray, cardsWrapperId) => {
-  let cardsWrapper = document.getElementById(cardsWrapperId);
-  while (cardsWrapper.firstChild) {
-    cardsWrapper.removeChild(cardsWrapper.firstChild);
-  }
-  usersArray.forEach((user) => {
-    let userCard = createUserCard(user);
-    cardsWrapper.append(userCard);
+const createNavbar = (linksArray) => {
+  let nav = document.createElement("nav");
+  nav.classList.add(
+    "d-flex",
+    "justify-content-between",
+    "text-white",
+    "bg-dark"
+  );
+
+  let navIcon = document.createElement("img");
+  navIcon.setAttribute(
+    "src",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw0S94Q9EZq3N7QiMpMUWPJGIguk_fbdirTA&s"
+  );
+
+  let navList = document.createElement("ul");
+
+  linksArray.forEach((link) => {
+    let navItem = document.createElement("li");
+    navItem.textContent = link;
+    navList.append(navItem);
   });
+
+  nav.append(navIcon, navList);
+
+  return nav;
 };
+
+export { createSocialButton, createUserCard, createNavbar };

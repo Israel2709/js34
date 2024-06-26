@@ -26,14 +26,11 @@ generalInfoFields.forEach((field) => {
     let property = event.target.name;
     let value = event.target.value;
     userObject[property] = value;
-    console.log(userObject);
+    console.log(usersArray);
   });
 });
-console.log(generalInfoFields);
 
 let socialFields = document.querySelectorAll("#user-form .user-socials");
-
-console.log(socialFields);
 
 socialFields.forEach((field) => {
   field.addEventListener("keyup", (event) => {
@@ -42,7 +39,7 @@ socialFields.forEach((field) => {
     userObject.socials
       ? (userObject.socials[property] = value)
       : (userObject.socials = { [property]: value });
-    console.log(userObject);
+    console.log(usersArray);
   });
 });
 
@@ -50,63 +47,12 @@ let saveUserBtn = document.getElementById("save-user-btn");
 
 saveUserBtn.addEventListener("click", () => {
   let keys = Object.keys(userObject);
-  if (keys.length) usersArray = [...usersArray, userObject];
+  if (keys.length) {
+    usersArray.push({ ...userObject });
+  }
   console.log(usersArray);
   printUserCards(usersArray, "user-cards-wrapper");
 });
-
-/*
-
-<div class="col">
-    <div class="card bg-medium-gray text-white h-100">
-    <div class="card-body d-flex flex-column align-items-center">
-        <img
-        src="https://randomuser.me/api/portraits/women/29.jpg"
-        alt=""
-        class="rounded-circle w-50 mx-auto"
-        />
-
-        <h2 class="card-title">User Name</h2>
-
-        <h4 class="text-success fs-4">Country, Location</h4>
-
-        <p class="fs-5">Abstract</p>
-        
-        
-        <div class="d-flex flex-column w-100 gap-3">
-        <a class="w-100 d-block"
-            ><button
-            class="btn btn-dark bg-light-gray text-white w-100"
-            >
-            Github
-            </button></a
-        >
-        <a class="w-100 d-block"
-            ><button
-            class="btn btn-dark bg-light-gray text-white w-100"
-            >
-            Linkedin
-            </button></a
-        >
-        <a class="w-100 d-block"
-            ><button
-            class="btn btn-dark bg-light-gray text-white w-100"
-            >
-            Twitter
-            </button></a
-        >
-        <a class="w-100 d-block"
-            ><button
-            class="btn btn-dark bg-light-gray text-white w-100"
-            >
-            Instagram
-            </button></a
-        >
-        </div>
-    </div>
-    </div>
-</div>
-*/
 
 const createSocialButton = (buttonData) => {
   /*{platform:"facebook",link:"www...."}*/

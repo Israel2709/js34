@@ -27,4 +27,16 @@ const getUserByKey = async (userKey) => {
   return data;
 };
 
-export { createUser, getAllUsers, getUserByKey };
+const addCommentToUser = async (userKey, comment) => {
+  let response = await fetch(
+    `https://js-511bb-default-rtdb.firebaseio.com/users/${userKey}/kudos/.json`,
+    {
+      method: "POST",
+      body: JSON.stringify(comment),
+    }
+  );
+  let data = await response.json();
+  return data;
+};
+
+export { createUser, getAllUsers, getUserByKey, addCommentToUser };
